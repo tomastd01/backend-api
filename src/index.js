@@ -11,7 +11,6 @@ app.use(express.static("public"));
 app.use("/api/products", productRouter);
 
 
-
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`)
 })

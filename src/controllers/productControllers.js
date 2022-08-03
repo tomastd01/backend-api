@@ -9,44 +9,46 @@ class productControllers {
     saveNewProduct = (req, res) => {
         const {body} = req;
         const newProduct = productSvcs.saveNewProduct(body)
-        console.log(newProduct)
-        res.status(200).json(newProduct)
+
+        res.status(201).json(newProduct)
     }
 
     getById = (req, res) => { 
         const id = req.params.id;
-        const products = this.products;
-        const product = products.find(product => product.id == Number(id));
+        const product = productSvcs.getById(id);
 
-        product ? 
-            res.status(200).json(product) 
-            : res.json({error: "Product not found"}) 
+        if (product) {
+            res.status(200).json(product)
+        } else {
+            res.status(404).json({messagge: "Product not found"}) 
+        };
     }
 
     replaceById = (req, res) => {
         const id = req.params.id;
-        const product = req.body;
-        product.id = Number(id);
-        const index = this.products.findIndex(product => product.id == id);
+        const {body} = req;
 
-        if (index) {
-            this.products.splice(index, 1, product);
-            res.status(200).json(product);
-        } else res.json({error: "Product not found"});
+        const replacedProduct = productSvcs.replaceById(id, body);
+
+        if (replacedProduct) {
+            res.status(200).json(replacedProduct);
+        } else {
+            res.status(404).json({message: "Product not found"})
+        };
 
     }
     
 
     deleteById = (req, res) => {
         const id = req.params.id;
-        const index = this.products.findIndex(product => product.id == Number(id));
+        const index = this.products.findIndex(product => product.id == id);
 
-        if (index > -1) {
-            this.products.splice(index, 1);
-            return res.status(200).json({message:"Product has been removed"})
+        if (index < 0) {
+            return res.status(404).json({messagge: "Product not found"})
         }
 
-        return res.status(404).json({error: "Product not found"})
+        productSvcs.deleteById(index);
+        res.status(200).json({message:"Product has been removed"})
     }
 
 }

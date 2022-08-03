@@ -21,12 +21,26 @@ class productServices {
         return newProduct;
     }
 
-    getById = () => {
+    getById = (id) => {
+        const product = this.products.find(product => product.id === id)
+        if (!product) {return};
 
+        return product;
     }
 
-    replaceById = () => {
-        
+    replaceById = (id, product) => {
+        const index = this.products.findIndex(product => product.id == id);
+        if (index == -1) return;
+
+        const newProduct = {
+            ...product,
+            id: id
+        }
+
+        this.products.splice(index, 1, newProduct);
+        saveProductsToDB(this.products)
+
+        return this.products[index]
     }
 
     deleteById = () => {
