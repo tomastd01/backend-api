@@ -1,7 +1,7 @@
 const db = require("./db.json");
 
 const getAllProducts = () => {
-    return db.products;
+    return db;
 };
 
 module.exports = {getAllProducts}

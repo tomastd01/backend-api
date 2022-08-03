@@ -1,8 +1,37 @@
-const products = require("../database/products");
+const { getAllProducts } = require("../database/products");
+const { saveProductsToDB, addIdToNewProduct } = require("../utils/utils")
 
-const getAll = () => {
-    const allProducts = products.getAllProducts();
-    return allProducts;
+class productServices {
+    constructor() {
+        this.products = getAllProducts();
+    }
+
+    getAll = () => {
+        return this.products;
+    }
+
+    saveNewProduct = (productToAdd) => {
+        const products = this.products;
+
+        const newProduct = addIdToNewProduct(productToAdd);
+
+        products.push(newProduct);
+        saveProductsToDB(products);
+
+        return newProduct;
+    }
+
+    getById = () => {
+
+    }
+
+    replaceById = () => {
+        
+    }
+
+    deleteById = () => {
+        
+    }
 }
 
-module.exports = {getAll}
+module.exports = new productServices;

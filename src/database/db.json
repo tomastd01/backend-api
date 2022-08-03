@@ -1,9 +1,12 @@
-{
-    "products": [
-        {
-            "id": 1,
-            "title": "Playstation 5",
-            "price": 500
-        }
-    ]
-}
+[
+  {
+    "id": 1,
+    "title": "Playstation 5",
+    "price": 500
+  },
+  {
+    "title": "Nintendo Switch",
+    "price": 600,
+    "id": "5b1c29b3-295d-4026-bf9b-56a5474c3baa"
+  }
+]

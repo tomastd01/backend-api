@@ -1,15 +1,19 @@
-const productSvcs = require("../services/productServices")
+const productSvcs = require("../services/productServices");
 
 class productControllers {
-    constructor() {
-        this.products = productSvcs.getAll();
-    }
     
     getAll = (req, res) => {
-        res.status(200).json(this.products);
+        res.status(200).json(productSvcs.getAll());
     }
 
-    getById = (req, res) => {
+    saveNewProduct = (req, res) => {
+        const {body} = req;
+        const newProduct = productSvcs.saveNewProduct(body)
+        console.log(newProduct)
+        res.status(200).json(newProduct)
+    }
+
+    getById = (req, res) => { 
         const id = req.params.id;
         const products = this.products;
         const product = products.find(product => product.id == Number(id));
@@ -17,20 +21,6 @@ class productControllers {
         product ? 
             res.status(200).json(product) 
             : res.json({error: "Product not found"}) 
-    }
-
-    save = (req, res) => {
-        const product = req.body;
-        const products = this.products;
-        const length = products.length
-
-        if (length) {
-            let last = products[length - 1]
-            product.id = last.id + 1;
-        } else product.id = 1;
-
-        products.push(product)
-        res.status(200).json(product)
     }
 
     replaceById = (req, res) => {

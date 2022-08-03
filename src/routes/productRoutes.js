@@ -5,7 +5,7 @@ const productCtrl = require("../controllers/productControllers");
 productRouter 
     .route("/")
     .get(productCtrl.getAll)
-    .post(productCtrl.save)
+    .post(productCtrl.saveNewProduct)
 
 productRouter 
     .route("/:id")
