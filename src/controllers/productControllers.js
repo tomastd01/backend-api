@@ -41,14 +41,14 @@ class productControllers {
 
     deleteById = (req, res) => {
         const id = req.params.id;
-        const index = this.products.findIndex(product => product.id == id);
 
-        if (index < 0) {
+        const ItemIsDeleted = productSvcs.deleteById(id);
+
+        if (ItemIsDeleted) {
+            res.status(200).json({message:"Product has been removed"})
+        } else {
             return res.status(404).json({messagge: "Product not found"})
         }
-
-        productSvcs.deleteById(index);
-        res.status(200).json({message:"Product has been removed"})
     }
 
 }

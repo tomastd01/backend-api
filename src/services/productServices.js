@@ -43,8 +43,13 @@ class productServices {
         return this.products[index]
     }
 
-    deleteById = () => {
-        
+    deleteById = (id) => {
+        const index = this.products.findIndex(product => product.id == id);
+        if (index == -1) return;
+
+        this.products.splice(index, 1);
+        saveProductsToDB(this.products);
+        return true
     }
 }
 
