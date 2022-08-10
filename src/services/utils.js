@@ -5,6 +5,10 @@ const saveProductsToDB = (array) => {
     fs.writeFileSync("./src/database/db.json", JSON.stringify(array, null, 2), {encoding: "utf-8"})
 }
 
+const saveMessagesToDB = (array) => {
+    fs.writeFileSync("./src/database/messages.json", JSON.stringify(array, null, 2), {encoding: "utf-8"})
+}
+
 const addIdToNewProduct = (newProduct) => {
     const productWithId = {
         ...newProduct,
@@ -16,5 +20,6 @@ const addIdToNewProduct = (newProduct) => {
 
 module.exports = {
     saveProductsToDB,
-    addIdToNewProduct
+    addIdToNewProduct,
+    saveMessagesToDB
 }

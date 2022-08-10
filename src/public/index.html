@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="form">
+        <h2>Agregar un producto:</h2>
+        <div>
+        <label for="title">Nombre: </label>
+        <input type="text" name="title" id="title">
+        <label for="price">Precio: </label>
+        <input type="number" name="price" id="price">
+        <label for="thumbnail">Foto URL: </label>
+        <input type="text" name="thumbnail" id="thumbnail">
+        <button onclick="saveProduct()">Guardar</button>
+        </div>
+    </div>
+    <div id="products">
+
+    </div>
+    <div id="chat">
+        <h2>Mensajes</h2>
+        <div id="posts">
+            
+        </div>
+    
+        <h3>Enviar mensaje:</h3>
+        <div id="form">
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" required>
+            <label for="msg">Mensaje:</label>
+            <input type="textarea" id="msg" name="msg">
+            <button onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>

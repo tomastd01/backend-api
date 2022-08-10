@@ -1,14 +1,14 @@
 [
-  {
-    "title": "Xbox Series X",
-    "price": "499",
-    "thumbnail": "https://m.media-amazon.com/images/I/61JGKhqxHxL._SX466_.jpg",
-    "id": "b9b328b4-243b-4cf2-9ca6-92baeb50dfbb"
-  },
-  {
-    "title": "Playstation 5",
-    "price": "900",
-    "thumbnail": "https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_SX425_.jpg",
-    "id": "3b41d463-a0bd-4011-a24d-4d1f8e08e00c"
-  }
-]
+    {
+      "title": "Xbox Series X",
+      "price": "499",
+      "thumbnail": "https://m.media-amazon.com/images/I/61JGKhqxHxL._SX466_.jpg",
+      "id": "b9b328b4-243b-4cf2-9ca6-92baeb50dfbb"
+    },
+    {
+      "title": "Playstation 5",
+      "price": "900",
+      "thumbnail": "https://m.media-amazon.com/images/I/31JaiPXYI8L._AC_SX425_.jpg",
+      "id": "3b41d463-a0bd-4011-a24d-4d1f8e08e00c"
+    }
+  ]
