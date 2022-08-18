@@ -1,25 +1,20 @@
 const {v4: uuid} = require("uuid");
 const fs = require("fs")
 
-const saveProductsToDB = (array) => {
-    fs.writeFileSync("./src/database/db.json", JSON.stringify(array, null, 2), {encoding: "utf-8"})
-}
-
-const saveMessagesToDB = (array) => {
-    fs.writeFileSync("./src/database/messages.json", JSON.stringify(array, null, 2), {encoding: "utf-8"})
+const saveToDB = (array, file) => {
+    fs.writeFileSync("./src/database/" + file, JSON.stringify(array, null, 2), {encoding: "utf-8"})
 }
 
 const addIdToNewProduct = (newProduct) => {
     const productWithId = {
-        ...newProduct,
         id: uuid(),
+        ...newProduct,
     }
 
     return productWithId
 }
 
 module.exports = {
-    saveProductsToDB,
-    addIdToNewProduct,
-    saveMessagesToDB
+    saveToDB,
+    addIdToNewProduct
 }

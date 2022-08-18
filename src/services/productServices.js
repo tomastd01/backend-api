@@ -1,5 +1,5 @@
 const { getAllProducts } = require("../database/products");
-const { saveProductsToDB, addIdToNewProduct } = require("./utils")
+const { saveToDB, addIdToNewProduct } = require("./utils")
 
 class productServices {
     constructor() {
@@ -16,7 +16,7 @@ class productServices {
         const newProduct = addIdToNewProduct(productToAdd);
 
         products.push(newProduct);
-        saveProductsToDB(products);
+        saveToDB(products, "products.json");
 
         return newProduct;
     }
@@ -38,7 +38,7 @@ class productServices {
         }
 
         this.products.splice(index, 1, newProduct);
-        saveProductsToDB(this.products)
+        saveToDB(this.products, "products.json");
 
         return this.products[index]
     }
@@ -48,7 +48,7 @@ class productServices {
         if (index == -1) return;
 
         this.products.splice(index, 1);
-        saveProductsToDB(this.products);
+        saveToDB(this.products, "products.json");
         return true
     }
 }
