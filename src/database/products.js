@@ -1,4 +1,4 @@
-const db = require("./db.json");
+const db = require("./products.json");
 
 const getAllProducts = () => {
     return db;

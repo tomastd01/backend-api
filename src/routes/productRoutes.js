@@ -1,11 +1,12 @@
 const express = require("express");
 const productRouter = express.Router();
 const productCtrl = require("../controllers/productControllers");
+const {validateProduct} = require("../validators/productValidator")
 
 productRouter 
     .route("/")
     .get(productCtrl.getAll)
-    .post(productCtrl.saveNewProduct)
+    .post(validateProduct, productCtrl.saveNewProduct)
 
 productRouter 
     .route("/:id")

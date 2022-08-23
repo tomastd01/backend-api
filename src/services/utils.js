@@ -6,8 +6,10 @@ const saveToDB = (array, file) => {
 }
 
 const addIdToNewProduct = (newProduct) => {
+    const date = new Date();
     const productWithId = {
         id: uuid(),
+        timestamp: date.toLocaleString(),
         ...newProduct,
     }
 
