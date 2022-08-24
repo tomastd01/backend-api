@@ -2,6 +2,17 @@
   {
     "id": "26cca692-2c3f-46a1-ae21-537799017921",
     "timestamp": "18/8/2022 06:21:30",
-    "products": []
+    "products": [
+      {
+        "id": "cbc7d6c2-159e-4c86-af47-64f72d1cd922",
+        "timestamp": "23/8/2022 20:27:42",
+        "name": "Playstation 5",
+        "description": "consola de videojuegos",
+        "code": 12345,
+        "imgUrl": "https://ps5asfdsdfgdsfg",
+        "price": 900,
+        "stock": 57
+      }
+    ]
   }
 ]

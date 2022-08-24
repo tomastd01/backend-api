@@ -1,5 +1,6 @@
+const productSvcs = require("../services/productServices")
 const { getAllCarts } = require("../database/cart");
-const { saveToDB } = require("./utils");
+const { saveToDB } = require("../utils/utils");
 const { v4:uuid } = require("uuid")
 
 class cartServices {
@@ -35,13 +36,15 @@ class cartServices {
         return this.carts[cartIndex].products;
     }
 
-    addProductToCart = (id, product) => {
+    addProductToCartById = (id, id_prod) => {
         const cartIndex = this.carts.findIndex(cart => cart.id == id);
-        if (cartIndex == -1) return { msg:"cart no encontrado"};
+        if (cartIndex == -1) return { msg:"Carrito no encontrado"};
 
+        const product = productSvcs.getById(id_prod)
         this.carts[cartIndex].products.push(product);
+
         saveToDB(this.carts, "carts.json");
-        return {message: "Producto agregado al carrito"};        
+        return {message: `Producto agregado al carrito ${id}`};        
     }
 
     deleteProductByCartId = (id, id_prod) => {

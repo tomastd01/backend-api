@@ -16,9 +16,8 @@ class cartControllers {
     }
 
     addProductToCart = (req, res) => {
-        const {id} = req.params;
-        const {body} = req;
-        res.json(cartSvcs.addProductToCart(id, body))
+        const {id, id_prod} = req.params;
+        res.json(cartSvcs.addProductToCartById(id, id_prod))
     }
 
     deleteProductByCartId = (req, res) => {

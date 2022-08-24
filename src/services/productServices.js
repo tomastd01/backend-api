@@ -1,5 +1,5 @@
 const { getAllProducts } = require("../database/products");
-const { saveToDB, addIdToNewProduct } = require("./utils")
+const { saveToDB, addIdToNewProduct } = require("../utils/utils")
 
 class productServices {
     constructor() {

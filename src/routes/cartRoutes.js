@@ -13,10 +13,10 @@ cartRouter
 cartRouter
     .route("/:id/products")
     .get(cartCtrl.getCart)
-    .post(cartCtrl.addProductToCart)
 
 cartRouter
     .route("/:id/products/:id_prod")
+    .post(cartCtrl.addProductToCart)
     .delete(cartCtrl.deleteProductByCartId)
 
 module.exports = cartRouter;
