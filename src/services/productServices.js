@@ -23,7 +23,7 @@ class productServices {
 
     getById = (id) => {
         const product = this.products.find(product => product.id === id)
-        if (!product) {return};
+        if (!product) return {msg: "Producto no encontrado"};
 
         return product;
     }

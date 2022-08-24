@@ -18,20 +18,21 @@ class cartServices {
 
         this.carts.push(newCart);
         saveToDB(this.carts, "carts.json")
-        return newCart.id;
+        return {msg: "Nuevo carrito creado", id: newCart.id};
     }
 
     deleteCart = (id) => {
         const cartIndex = this.carts.findIndex(cart => cart.id == id);
-        if (cartIndex == -1) return;
+        if (cartIndex == -1) return {msg: "ID de carrito inválido"};
 
         this.carts.splice(cartIndex,1)
-        return this.carts[cartIndex];
+        saveToDB(this.carts, "carts.json");
+        return {msg: "Carrito eliminado"};
     }
 
     getCart = (id) => {
         const cartIndex = this.carts.findIndex(cart => cart.id == id);
-        if (cartIndex == -1) return;
+        if (cartIndex == -1) return {msg: "ID de carrito inválido"};
         
         return this.carts[cartIndex].products;
     }
@@ -49,13 +50,13 @@ class cartServices {
 
     deleteProductByCartId = (id, id_prod) => {
         const cartIndex = this.carts.findIndex(cart => cart.id == id);
-        if (cartIndex == -1) return;
+        if (cartIndex == -1) return {msg: "ID de carrito inválido"};
         const prodIndex = this.carts[cartIndex].products.findIndex(prod => prod.id == id_prod);
-        if(prodIndex == -1) return;
+        if(prodIndex == -1) return {msg: "ID de producto inválido"};
 
         this.carts[cartIndex].products.splice(prodIndex,1);
         saveToDB(this.carts, "carts.json");
-        return {msg: "producto eliminado"}
+        return {msg: "Producto eliminado"}
     }
 
 }

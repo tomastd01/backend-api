@@ -1,6 +1,7 @@
 const express = require("express");
 const cartRouter = express.Router();
-const cartCtrl = require("../controllers/cartControllers")
+const cartCtrl = require("../controllers/cartControllers");
+const { validateID, validateIdAndProdId } = require("../validators/uuidValidator");
 
 cartRouter
     .route("/")
@@ -8,15 +9,15 @@ cartRouter
 
 cartRouter
     .route("/:id")
-    .delete(cartCtrl.deleteCart)
+    .delete(validateID, cartCtrl.deleteCart)
 
 cartRouter
     .route("/:id/products")
-    .get(cartCtrl.getCart)
+    .get(validateID, cartCtrl.getCart)
 
 cartRouter
     .route("/:id/products/:id_prod")
-    .post(cartCtrl.addProductToCart)
-    .delete(cartCtrl.deleteProductByCartId)
+    .post(validateIdAndProdId, cartCtrl.addProductToCart)
+    .delete(validateIdAndProdId, cartCtrl.deleteProductByCartId)
 
 module.exports = cartRouter;

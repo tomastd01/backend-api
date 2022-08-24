@@ -14,14 +14,14 @@ class productControllers {
     }
 
     getById = (req, res) => { 
-        const id = req.params.id;
+        const {id} = req.params;
+        
         const product = productSvcs.getById(id);
-
-        if (product) {
-            res.status(200).json(product)
-        } else {
-            res.status(404).json({messagge: "Product not found"}) 
-        };
+        
+        if(!product) {
+            res.status(404).json({messagge: "Product not found"})
+        }
+        res.status(200).json(product)
     }
 
     replaceById = (req, res) => {
@@ -30,11 +30,10 @@ class productControllers {
 
         const replacedProduct = productSvcs.replaceById(id, body);
 
-        if (replacedProduct) {
-            res.status(200).json(replacedProduct);
-        } else {
-            res.status(404).json({message: "Product not found"})
-        };
+        if(!replacedProduct) {
+            res.status(404).json({messagge: "Product not found"})
+        }
+        res.status(200).json(replacedProduct)
 
     }
     
