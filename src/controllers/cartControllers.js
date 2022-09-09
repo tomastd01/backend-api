@@ -1,28 +1,28 @@
 const cartSvcs = require("../services/cartServices");
 
 class cartControllers {
-    newCart = (req, res) => {
-        res.json(cartSvcs.newCart())
+    newCart = async(req, res) => {
+        res.json(await cartSvcs.newCart())
     }
 
-    getCart = (req, res) => {
+    getCart = async(req, res) => {
         const {id} = req.params;
-        res.json(cartSvcs.getCart(id))
+        res.json(await cartSvcs.getCart(id))
     }
 
-    deleteCart = (req, res) => {
+    deleteCart = async(req, res) => {
         const {id} = req.params;
-        res.json(cartSvcs.deleteCart(id))
+        res.json(await cartSvcs.deleteCart(id))
     }
 
-    addProductToCart = (req, res) => {
+    addProductToCart = async(req, res) => {
         const {id, id_prod} = req.params;
-        res.json(cartSvcs.addProductToCartById(id, id_prod))
+        res.json(await cartSvcs.addProductToCartById(id, id_prod))
     }
 
-    deleteProductByCartId = (req, res) => {
+    deleteProductByCartId = async(req, res) => {
         const {id, id_prod} = req.params;
-        res.json(cartSvcs.deleteProductByCartId(id, id_prod))
+        res.json(await cartSvcs.deleteProductByCartId(id, id_prod))
     }
 }
 

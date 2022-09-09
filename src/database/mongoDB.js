@@ -1,11 +1,9 @@
-const { UserImportBuilder } = require("firebase-admin/lib/auth/user-import-builder");
 const mongoose = require("mongoose");
-const {URI, DB} = require("../config/config");
+const {URI} = require("../config/config");
 
 class MongoDB {
     constructor(model) {
         this.URI = URI;
-        this.DB = DB;
         this.model = model
     }
 
@@ -59,10 +57,20 @@ class MongoDB {
         }
     }
 
+    async updateCart(id,cart) {
+        try {
+            const doc = await this.getById(id);
+            doc.products = cart
+            return await doc.save()
+        } catch(err) {
+            console.log("Error", err)
+        }
+    }
+
     async delete(id) {
         try {
             const _id = mongoose.Types.ObjectId(id);
-            return await this.deleteOne({_id: _id});
+            return await this.model.deleteOne({_id: _id});
         } catch(err) {
             console.log("Error", err)
         }

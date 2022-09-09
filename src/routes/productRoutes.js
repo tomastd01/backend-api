@@ -12,8 +12,8 @@ productRouter
 
 productRouter 
     .route("/:id")
-    .get(validateID, productCtrl.getById)
-    .put(validateID, validateProduct, productCtrl.replaceById)
-    .delete(validateID, productCtrl.deleteById)
+    .get( productCtrl.getById)
+    .put( validateProduct, productCtrl.replaceById)
+    .delete( productCtrl.deleteById)
 
 module.exports = productRouter;

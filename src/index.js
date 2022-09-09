@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use("/api/products", controlAuth, productRouter);
+app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
 
 const PORT = process.env.PORT || 8080;

@@ -1,22 +1,22 @@
-const productSvcs = require("../services/productServices");
+const productSvcs = require("../database/daos/products/productsDaoMongoDB");
 
 class productControllers {
     
-    getAll = (req, res) => {
-        res.status(200).json(productSvcs.getAll());
+    getAll = async (req, res) => {
+        res.status(200).json(await productSvcs.getAll());
     }
 
-    saveNewProduct = (req, res) => {
+    saveNewProduct = async (req, res) => {
         const {body} = req;
-        const newProduct = productSvcs.saveNewProduct(body)
+        const newProduct = await productSvcs.save(body)
 
         res.status(201).json(newProduct)
     }
 
-    getById = (req, res) => { 
+    getById = async (req, res) => { 
         const {id} = req.params;
         
-        const product = productSvcs.getById(id);
+        const product = await productSvcs.getById(id);
         
         if(!product) {
             res.status(404).json({messagge: "Product not found"})
@@ -24,11 +24,11 @@ class productControllers {
         res.status(200).json(product)
     }
 
-    replaceById = (req, res) => {
+    replaceById = async (req, res) => {
         const id = req.params.id;
         const {body} = req;
 
-        const replacedProduct = productSvcs.replaceById(id, body);
+        const replacedProduct = await productSvcs.update(id, body);
 
         if(!replacedProduct) {
             res.status(404).json({messagge: "Product not found"})
@@ -38,10 +38,10 @@ class productControllers {
     }
     
 
-    deleteById = (req, res) => {
+    deleteById = async (req, res) => {
         const id = req.params.id;
 
-        const ItemIsDeleted = productSvcs.deleteById(id);
+        const ItemIsDeleted = await productSvcs.delete(id);
 
         if (ItemIsDeleted) {
             res.status(200).json({message:"Product has been removed"})
