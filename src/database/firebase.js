@@ -1,8 +1,8 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("../config/backend-e1219-firebase-adminsdk-pn0ms-b29b2671a0.json");
+const {config} = require("../config/config")
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(config.fb)
 });
 
 const db = admin.firestore();

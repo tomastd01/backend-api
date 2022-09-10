@@ -1,4 +1,7 @@
-const {productsDao, cartsDao} = require("../database/daos")
+const productsDao = require("../database/daos/products/productsDaoFirebase");
+const cartsDao = require("../database/daos/carts/cartsDaoFirebase");
+/* const productsDao = require("../database/daos/products/productsDaoMongoDB");
+const cartsDao = require("../database/daos/carts/cartsDaoMongoDB"); */
 
 class cartServices {
 

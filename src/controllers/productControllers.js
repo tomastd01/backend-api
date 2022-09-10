@@ -1,4 +1,5 @@
-const {productsDao} = require("../database/daos/")
+const productsDao = require("../database/daos/products/productsDaoFirebase")
+/* const productsDao = require("../database/daos/products/productsDaoMongoDB") */
 
 class productControllers {
     

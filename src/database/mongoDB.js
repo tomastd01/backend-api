@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const {URI} = require("../config/config");
+const {config} = require("../config/config");
 
 class MongoDB {
     constructor(model) {
-        this.URI = URI;
+        this.URI = config.mongo.URI;
         this.model = model
     }
 
