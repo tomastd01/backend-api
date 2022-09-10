@@ -1,5 +1,4 @@
-const productDao = require("../database/daos/products/productsDaoFirebase")
-const cartsDao = require("../database/daos/carts/cartsDaoFirebase");
+const {productsDao, cartsDao} = require("../database/daos")
 
 class cartServices {
 
@@ -24,7 +23,7 @@ class cartServices {
 
     addProductToCartById = async (id, id_prod) => {
         const cart = await cartsDao.getById(id);
-        const product = await productDao.getById(id_prod);
+        const product = await productsDao.getById(id_prod);
         cart.products.push(product);
         await cartsDao.updateCart(id,cart.products);
         return {message: `Producto ${product.name} agregado al carrito ${id}`};        
