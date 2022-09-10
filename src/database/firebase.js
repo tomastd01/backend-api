@@ -27,7 +27,7 @@ class Firebase {
     async getById(id) {
         try {
             const docRef = this.collection.doc(id)
-            if(!docRef.exists) throw {msg: "No encontrado"}
+            /* if(!docRef.exists) throw {msg: "No encontrado"} */
             const doc = await docRef.get();
             return {id: doc.id, ...doc.data()}
         } catch(err) {
@@ -36,9 +36,7 @@ class Firebase {
     }
     async save(obj) {
         try {
-            let doc = this.collection.doc();
-            await doc.create(obj);
-            return {msg: "objeto guardado"};
+            return await this.collection.add(obj);
         } catch(err) {
             console.log("Error",err)
         }
@@ -48,6 +46,15 @@ class Firebase {
             return await this.collection.doc(id).set(obj)
         } catch(err) {
             console.log("Error",err)
+        }
+    }
+    async updateCart(id,cart) {
+        try {
+            const doc = await this.getById(id);
+            doc.products = cart
+            return await this.update(id, doc)
+        } catch(err) {
+            console.log("Error", err)
         }
     }
     async delete(id) {

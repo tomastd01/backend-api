@@ -1,6 +1,5 @@
-const productDao = require("../database/daos/products/productsDaoMongoDB")
-const cartsDao = require("../database/daos/carts/cartsDaoMongoDB");
-/* const { saveToDB } = require("../utils/utils"); */
+const productDao = require("../database/daos/products/productsDaoFirebase")
+const cartsDao = require("../database/daos/carts/cartsDaoFirebase");
 
 class cartServices {
 
