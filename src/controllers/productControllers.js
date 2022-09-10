@@ -1,4 +1,4 @@
-const productSvcs = require("../database/daos/products/productsDaoMongoDB");
+const productSvcs = require("../database/daos/products/productsDaoFirebase");
 
 class productControllers {
     
